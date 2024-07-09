@@ -1,0 +1,36 @@
+name: Release
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  build-a13-kernel:
+    uses: ./.github/workflows/build-kernel-a13.yml
+    secrets: inherit
+  release:
+    needs:
+      - build-a13-kernel
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+      - name: Zip AnyKernel3
+        run: |
+          for dir in AnyKernel3-*; do
+            if [ -d "$dir" ]; then
+              echo "----- Zip $dir -----"
+              (cd $dir && zip -r9 "$dir".zip ./* -x .git .gitignore ./*.zip && mv *.zip ..)
+            fi
+          done
+
+      - name: Display structure of downloaded files
+        run: ls -R
+
+      - name: release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            AnyKernel3-*.zip
+            boot-images-*/Image-*/*.img.gz
