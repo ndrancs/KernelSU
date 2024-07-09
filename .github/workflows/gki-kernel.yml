@@ -114,10 +114,19 @@ jobs:
         working-directory: android-kernel
         run: |
           rm common/android/abi_gki_protected_exports_* || echo "No protected exports!"
+          echo "CONFIG_SYSVIPC=y" >> common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_UTS_NS=y" >> common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_PID_NS=y" >> common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_IPC_NS=y" >> common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_USER_NS=y" >> common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_NET_NS=y" >> common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_CGROUP_DEVICE=y" >> common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_KERNEL_CGROUP_FREEZER=y" >> common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_VT=y
           git config --global user.email "bot@kernelsu.org"
           git config --global user.name "KernelSUBot"
           touch common/time.txt
-          cd common/ && git add -A && git commit -a -m "Add KernelSU"
+          cd common/ && git add -A && git commit -a -m "Add LXC Lindroid"
           repo status
 
       - name: Build Kernel Now

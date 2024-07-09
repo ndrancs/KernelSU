@@ -10,6 +10,8 @@ jobs:
     uses: ./.github/workflows/build-kernel-a13.yml
     secrets: inherit
   release:
+    permissions:
+      contents: write
     needs:
       - build-a13-kernel
     runs-on: ubuntu-latest
