@@ -113,7 +113,6 @@ jobs:
       - name: Make working directory clean to avoid dirty
         working-directory: android-kernel
         run: |
-          rm common/android/abi_gki_protected_exports_* || echo "No protected exports!"
           echo "CONFIG_SYSVIPC=y" >> common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_UTS_NS=y" >> common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_PID_NS=y" >> common/arch/arm64/configs/gki_defconfig
@@ -122,7 +121,7 @@ jobs:
           echo "CONFIG_NET_NS=y" >> common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_CGROUP_DEVICE=y" >> common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_KERNEL_CGROUP_FREEZER=y" >> common/arch/arm64/configs/gki_defconfig
-          echo "CONFIG_VT=y
+          echo "CONFIG_VT=y" >> common/arch/arm64/configs/gki_defconfig
           git config --global user.email "bot@kernelsu.org"
           git config --global user.name "KernelSUBot"
           touch common/time.txt
