@@ -119,8 +119,8 @@ jobs:
         run: |
           rm common/android/abi_gki_protected_exports_* || echo "No protected exports!"
           mkdir common/arch/arm64/configs/vendor
-          cp -pf ../KernelSU/gki_defconfig/socrates_GKI.config common/arch/arm64/configs/vendor/
-          cp -pf ../KernelSU/gki_defconfig/gki_defconfig common/arch/arm64/configs/gki_defconfig
+          cp -pf ../KernelSU/gki_defconfig/socrates_GKI.config common/arch/arm64/configs/vendor/socrates_GKI.config
+          cp -pf ../KernelSU/gki_defconfig/build.config.gki common/build.config.gki
           git config --global user.email "bot@kernelsu.org"
           git config --global user.name "KernelSUBot"
           touch common/time.txt
