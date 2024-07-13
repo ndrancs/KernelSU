@@ -1,2 +1,1 @@
 DEFCONFIG="gki_defconfig vendor/socrates_GKI.config"
-POST_DEFCONFIG_CMDS="check_defconfig"
