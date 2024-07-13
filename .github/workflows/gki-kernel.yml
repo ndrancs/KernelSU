@@ -121,6 +121,10 @@ jobs:
           mkdir common/arch/arm64/configs/vendor
           cp -pf ../KernelSU/gki_defconfig/socrates_GKI.config common/arch/arm64/configs/vendor/socrates_GKI.config
           cp -pf ../KernelSU/gki_defconfig/build.config.gki common/build.config.gki
+          cp -pf ../KernelSU/gki_defconfig/cgroup.c common/kernel/cgroup/cgroup.c
+          cp -pf ../KernelSU/gki_defconfig/util.c common/fs/overlayfs/util.c
+          cp -pf ../KernelSU/gki_defconfig/module.c common/kernel/module.c
+          cp -pf ../KernelSU/gki_defconfig/sched.h common/include/linux/sched.h
           git config --global user.email "bot@kernelsu.org"
           git config --global user.name "KernelSUBot"
           touch common/time.txt
